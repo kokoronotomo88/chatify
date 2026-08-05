@@ -1,0 +1,58 @@
+name: 🔧 Deploy Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+      message:
+        description: 'Deployment message'
+        required: false
+        default: 'Manual deployment'
+        type: string
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy-manual:
+    name: Manual Deploy (${{ inputs.environment }})
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🔍 Lint
+        run: npm run lint --if-present
+
+      - name: 🏗️ Build
+        run: npm run build --if-present
+
+      - name: 🌐 Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: 🔑 Vercel Pull (env vars)
+        run: vercel pull --yes --environment=${{ inputs.environment }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🏗️ Vercel Build
+        run: vercel build ${{ inputs.environment == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🚀 Vercel Deploy
+        run: vercel deploy --prebuilt ${{ inputs.environment == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
