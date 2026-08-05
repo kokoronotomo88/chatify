@@ -1,0 +1,50 @@
+{
+  "name": "chattify",
+  "version": "1.0.0",
+  "description": "Connect. Chat. Create. — Premium Realtime Chat PWA",
+  "private": true,
+  "scripts": {
+    "start": "npx serve . -l 3000",
+    "dev": "npx serve . -l 3000 --cors",
+    "lint": "npx eslint . --ext .js --ignore-pattern node_modules",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check .",
+    "build": "echo 'Static site — no build step required'",
+    "test": "echo 'No tests configured yet' && exit 0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "serve": "^14.2.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2022": true,
+      "serviceworker": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "no-var": "error",
+      "prefer-const": "error"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["pwa", "chat", "realtime", "vanilla-js", "offline-first"],
+  "author": "Chattify Team",
+  "license": "MIT"
+}

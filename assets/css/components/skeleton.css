@@ -1,0 +1,16 @@
+/* ── Skeleton Component ── */
+.skeleton-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+}
+.skeleton-circle { border-radius: var(--radius-full); flex-shrink: 0; }
+.skeleton-line { height: 14px; border-radius: var(--radius-pill); }
+.skeleton-block { border-radius: var(--radius-lg); }
+.skeleton-avatar-sm { width: var(--avatar-sm); height: var(--avatar-sm); }
+.skeleton-avatar-md { width: var(--avatar-md); height: var(--avatar-md); }
+.skeleton-avatar-lg { width: var(--avatar-lg); height: var(--avatar-lg); }
+.skeleton-text-sm  { height: 10px; }
+.skeleton-text-md  { height: 14px; }
+.skeleton-text-lg  { height: 18px; }

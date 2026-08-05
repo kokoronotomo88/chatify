@@ -1,0 +1,80 @@
+/* ── Header Component ── */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: calc(var(--sat) + var(--space-3)) var(--space-4) var(--space-3);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border-subtle);
+  min-height: var(--header-height);
+  will-change: transform;
+}
+.app-header__back {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.app-header__back:hover { background: var(--bg-surface); }
+.app-header__back:active { transform: scale(0.88); }
+.app-header__title-area { flex: 1; min-width: 0; }
+.app-header__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app-header__subtitle {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app-header__subtitle--online { color: var(--status-online); }
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.app-header__action {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  position: relative;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.app-header__action:hover { background: var(--bg-surface); color: var(--text-primary); }
+.app-header__action:active { transform: scale(0.88); }
+/* Branding header */
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--sat) + var(--space-4)) var(--space-4) var(--space-3);
+}
+.brand-header__logo {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: var(--ls-tight);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

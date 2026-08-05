@@ -1,0 +1,82 @@
+/* ── Button Component ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  letter-spacing: var(--ls-wide);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--dur-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Ripple */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.12);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.btn:active::after { opacity: 1; }
+.btn:active { transform: scale(0.97); }
+
+/* Variants */
+.btn--brand {
+  background: var(--gradient-brand);
+  color: var(--text-on-brand);
+  box-shadow: var(--shadow-brand);
+}
+.btn--brand:hover { box-shadow: 0 8px 40px rgba(139,92,246,0.5); transform: translateY(-1px); }
+
+.btn--ghost {
+  background: var(--glass-bg-light);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  backdrop-filter: var(--glass-blur-sm);
+}
+.btn--ghost:hover { border-color: var(--border-brand); background: rgba(139,92,246,0.08); }
+
+.btn--danger {
+  background: rgba(239,68,68,0.15);
+  color: var(--color-error);
+  border: 1px solid rgba(239,68,68,0.25);
+}
+.btn--danger:hover { background: rgba(239,68,68,0.25); }
+
+.btn--text { background: none; color: var(--brand-purple); padding: var(--space-2) var(--space-3); }
+.btn--text:hover { color: var(--brand-pink); }
+
+/* Sizes */
+.btn--sm  { padding: var(--space-2) var(--space-4);  font-size: var(--fs-sm); }
+.btn--lg  { padding: var(--space-4) var(--space-8);  font-size: var(--fs-md); }
+.btn--icon { width: 44px; height: 44px; padding: 0; border-radius: var(--radius-full); }
+.btn--icon-sm { width: 36px; height: 36px; padding: 0; border-radius: var(--radius-full); }
+
+/* States */
+.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+.btn--loading { pointer-events: none; }
+.btn--loading::before {
+  content: '';
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: var(--radius-full);
+  animation: spin 0.7s linear infinite;
+  margin-right: var(--space-2);
+}
+
+/* Full width */
+.btn--full { width: 100%; }

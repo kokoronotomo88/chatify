@@ -1,0 +1,135 @@
+/* ── Message Bubble ── */
+.messages-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+.message-group { margin: var(--space-1) 0; }
+.message-group--sent { align-items: flex-end; display: flex; flex-direction: column; }
+.message-group--received { align-items: flex-start; display: flex; flex-direction: column; }
+
+.message-bubble {
+  max-width: 72%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-xl);
+  position: relative;
+  word-break: break-word;
+  contain: layout style;
+}
+.message-bubble--sent {
+  background: var(--msg-sent-bg);
+  color: #fff;
+  border-radius: var(--radius-xl) var(--radius-xl) var(--radius-xs) var(--radius-xl);
+  box-shadow: var(--shadow-brand);
+  animation: msgSentIn var(--dur-normal) var(--ease-out) both;
+}
+.message-bubble--received {
+  background: var(--msg-received-bg);
+  color: var(--text-primary);
+  border-radius: var(--radius-xl) var(--radius-xl) var(--radius-xl) var(--radius-xs);
+  border: 1px solid var(--border-subtle);
+  animation: msgIn var(--dur-normal) var(--ease-out) both;
+}
+.message-bubble__text { font-size: var(--fs-base); line-height: var(--lh-relaxed); }
+.message-bubble__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+.message-bubble__time {
+  font-size: var(--fs-xs);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.message-bubble--sent .message-bubble__time { color: rgba(255,255,255,0.75); }
+.message-bubble--received .message-bubble__time { color: var(--text-tertiary); }
+
+/* Ticks */
+.message-bubble__ticks { font-size: 14px; }
+.message-bubble__ticks--sent      { color: rgba(255,255,255,0.6); }
+.message-bubble__ticks--delivered { color: rgba(255,255,255,0.8); }
+.message-bubble__ticks--read      { color: #7DD3FC; }
+
+/* Image message */
+.message-bubble--image {
+  padding: 4px;
+  overflow: hidden;
+}
+.message-bubble__image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: calc(var(--radius-xl) - 4px);
+  display: block;
+}
+
+/* Date separator */
+.date-separator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+}
+.date-separator__line { flex: 1; height: 1px; background: var(--border-subtle); }
+.date-separator__label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--text-muted);
+  letter-spacing: var(--ls-wider);
+  padding: var(--space-1) var(--space-3);
+  background: var(--bg-surface);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Scroll to bottom btn */
+.scroll-to-bottom {
+  position: absolute;
+  bottom: calc(var(--input-height) + var(--space-3));
+  right: var(--space-4);
+  width: 40px; height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  z-index: var(--z-raised);
+  transition: all var(--dur-fast) var(--ease-out);
+  animation: fadeInUp var(--dur-normal) var(--ease-spring) both;
+}
+.scroll-to-bottom:hover { background: var(--bg-elevated); transform: translateY(-2px); }
+
+/* Reply preview */
+.reply-preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--brand-purple);
+  animation: slideInUp var(--dur-fast) var(--ease-out) both;
+}
+.reply-preview__text {
+  flex: 1;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reply-preview__close { color: var(--text-muted); cursor: pointer; }

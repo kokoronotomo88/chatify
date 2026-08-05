@@ -1,0 +1,84 @@
+/* ── PIN Input Component ── */
+.pin-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+.pin-input__slot {
+  width: 52px; height: 60px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  border: 2px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              box-shadow    var(--dur-fast) var(--ease-out);
+}
+.pin-input__slot--filled {
+  border-color: var(--border-brand);
+  box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+}
+.pin-input__slot--active {
+  border-color: var(--brand-purple);
+  box-shadow: 0 0 0 4px rgba(139,92,246,0.2);
+}
+.pin-input__slot--error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+  animation: shake 0.5s var(--ease-inout) both;
+}
+.pin-input__dot {
+  width: 14px; height: 14px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-brand);
+  animation: pinFill var(--dur-fast) var(--ease-spring) both;
+}
+/* Caret blink when active & empty */
+.pin-input__slot--active .pin-input__caret {
+  width: 2px; height: 28px;
+  background: var(--brand-purple);
+  border-radius: var(--radius-pill);
+  animation: pulse 1s ease-in-out infinite;
+}
+/* Numeric keypad */
+.pin-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  padding: 0 var(--space-4);
+  max-width: 280px;
+  margin: 0 auto;
+}
+.pin-key {
+  height: 68px;
+  border-radius: var(--radius-xl);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  transition: all var(--dur-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+.pin-key:active { transform: scale(0.92); background: var(--bg-elevated); }
+.pin-key__letters {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  margin-top: 2px;
+}
+.pin-key--backspace { background: rgba(139,92,246,0.08); color: var(--brand-purple); }
+.pin-key--delete    { background: rgba(239,68,68,0.08);  color: var(--color-error); }

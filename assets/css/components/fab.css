@@ -1,0 +1,33 @@
+/* ── FAB (Floating Action Button) ── */
+.fab {
+  position: fixed;
+  bottom: calc(var(--sab) + var(--space-6));
+  right: var(--space-5);
+  width: 56px; height: 56px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-brand);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-brand);
+  z-index: var(--z-raised);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-spring);
+  animation: scaleIn var(--dur-normal) var(--ease-spring) both;
+}
+.fab:hover  { transform: scale(1.08); box-shadow: 0 12px 40px rgba(139,92,246,0.6); }
+.fab:active { transform: scale(0.93); }
+.fab--hidden { display: none; }
+.fab__icon  { width: 24px; height: 24px; transition: transform var(--dur-normal) var(--ease-spring); }
+.fab--open .fab__icon { transform: rotate(45deg); }
+/* Extended FAB */
+.fab--extended {
+  width: auto;
+  padding: 0 var(--space-5);
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+}

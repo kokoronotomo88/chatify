@@ -1,0 +1,79 @@
+/* ── Tab Bar Component ── */
+.tab-bar {
+  display: flex;
+  align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 var(--space-4);
+  position: relative;
+}
+.tab-bar__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-2);
+  cursor: pointer;
+  position: relative;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  transition: color var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+.tab-bar__item:hover { color: var(--text-secondary); }
+.tab-bar__item--active { color: var(--brand-purple); }
+.tab-bar__icon { width: 22px; height: 22px; }
+.tab-bar__indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-brand);
+  transition: left var(--dur-normal) var(--ease-spring),
+              width var(--dur-normal) var(--ease-spring);
+  box-shadow: 0 0 8px rgba(139,92,246,0.6);
+}
+.tab-bar__badge {
+  position: absolute;
+  top: 6px;
+  right: calc(50% - 18px);
+  width: 8px; height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-brand);
+  border: 2px solid var(--bg-secondary);
+}
+
+/* Bottom nav (app nav) */
+.bottom-nav {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  padding-bottom: calc(var(--space-2) + var(--sab));
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+}
+.bottom-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: var(--space-2);
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.bottom-nav__item--active { color: var(--brand-purple); }
+.bottom-nav__item .icon { transition: transform var(--dur-fast) var(--ease-spring); }
+.bottom-nav__item--active .icon { transform: scale(1.15); }

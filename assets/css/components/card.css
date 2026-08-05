@@ -1,0 +1,47 @@
+/* ── Card Component ── */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+.card--glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-color: var(--glass-border);
+}
+.card--brand {
+  background: var(--gradient-brand);
+  border: none;
+  box-shadow: var(--shadow-brand);
+}
+.card--elevated {
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-md);
+}
+.card--gradient-border {
+  background: var(--bg-secondary);
+  border: none;
+  position: relative;
+}
+.card--gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-brand);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.card--pressable {
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.card--pressable:active { transform: scale(0.98); }
+.card--pressable:hover  { box-shadow: var(--shadow-lg); border-color: var(--border-brand); }

@@ -1,0 +1,75 @@
+/* ── Avatar Component ── */
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.avatar__img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.avatar__initials {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-on-brand);
+  background: var(--gradient-brand);
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sizes */
+.avatar--sm { width: var(--avatar-sm); height: var(--avatar-sm); font-size: var(--fs-sm); }
+.avatar--md { width: var(--avatar-md); height: var(--avatar-md); font-size: var(--fs-base); }
+.avatar--lg { width: var(--avatar-lg); height: var(--avatar-lg); font-size: var(--fs-lg); }
+.avatar--xl { width: var(--avatar-xl); height: var(--avatar-xl); font-size: var(--fs-xl); }
+
+/* Story ring */
+.avatar--story {
+  padding: 2px;
+  background: linear-gradient(135deg, #8B5CF6, #EC4899, #06B6D4);
+  background-size: 200% 200%;
+  animation: storyRing 3s linear infinite;
+}
+.avatar--story .avatar__img { border: 2px solid var(--bg-primary); }
+
+.avatar--story-viewed {
+  padding: 2px;
+  background: var(--border-default);
+}
+.avatar--story-viewed .avatar__img { border: 2px solid var(--bg-primary); }
+
+/* Status dot */
+.avatar__status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-secondary);
+}
+.avatar__status--online  { background: var(--status-online); }
+.avatar__status--away    { background: var(--status-away); }
+.avatar__status--busy    { background: var(--status-busy); }
+.avatar__status--offline { background: var(--status-offline); }
+
+/* Group stacked avatars */
+.avatar-stack {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.avatar-stack .avatar + .avatar { margin-right: -10px; }

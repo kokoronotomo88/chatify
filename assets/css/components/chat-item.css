@@ -1,0 +1,59 @@
+/* ── Chat Item Component ── */
+.chat-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  position: relative;
+  transition: background var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  contain: layout style;
+}
+.chat-item:hover  { background: rgba(255,255,255,0.03); }
+.chat-item:active { background: rgba(139,92,246,0.06); transform: scale(0.995); }
+.chat-item__avatar { position: relative; flex-shrink: 0; }
+.chat-item__content { flex: 1; min-width: 0; }
+.chat-item__header  { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+.chat-item__name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+.chat-item__time {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  margin-left: var(--space-2);
+}
+.chat-item__time--unread { color: var(--brand-purple); font-weight: var(--fw-semibold); }
+.chat-item__footer { display: flex; align-items: center; gap: var(--space-1); }
+.chat-item__preview {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chat-item__preview--unread { color: var(--text-secondary); font-weight: var(--fw-medium); }
+.chat-item__preview-sender { color: var(--brand-purple); font-weight: var(--fw-semibold); }
+.chat-item__meta { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-1); flex-shrink: 0; }
+/* Read ticks */
+.chat-item__ticks { color: var(--text-muted); font-size: 14px; }
+.chat-item__ticks--sent     { color: var(--text-muted); }
+.chat-item__ticks--delivered { color: var(--text-secondary); }
+.chat-item__ticks--read     { color: var(--brand-cyan); }
+/* Media indicator */
+.chat-item__media-icon { color: var(--text-muted); width: 14px; height: 14px; flex-shrink: 0; }
+/* Separator */
+.chat-item + .chat-item { border-top: 1px solid var(--border-subtle); }
+/* Muted */
+.chat-item--muted .chat-item__name { color: var(--text-secondary); }
+.chat-item--muted .chat-item__preview { color: var(--text-muted); }
